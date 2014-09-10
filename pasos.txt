@@ -1,0 +1,19 @@
+
+Powerline:
+Asuming you already installed and configured vim-powerline, if you're using Ubuntu (or some similarly .font-configured linux variant), then all you need to do is:
+
+cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~
+
+If you're using something else, like OSX, then you'll need to download these and install them the usual way.
+
+Para instalar el power line solo necesitas clonar todo el repo dentro de bundles
+
+Colors:
+El folder de colors debe ir afuera de bundles
+En el bashrc se debe poner la lineas
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
