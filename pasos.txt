@@ -1,13 +1,16 @@
 
 Powerline:
+Ubuntu
 Asuming you already installed and configured vim-powerline, if you're using Ubuntu (or some similarly .font-configured linux variant), then all you need to do is:
 
 cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~
 
 If you're using something else, like OSX, then you'll need to download these and install them the usual way.
-
+OSX
+Para que se vea la barra de powerline bien hay que convertir
+PowerlineSymbols.sfd a .ttf y agregarlo al folder de fonts en /Users/franciscoruiz/Library/Fonts
 Para instalar el power line solo necesitas clonar todo el repo dentro de bundles
-
+La aplicacion de x11 que hace esto en OSX es FontForger
 Colors:
 El folder de colors debe ir afuera de bundles
 En el bashrc se debe poner la lineas
