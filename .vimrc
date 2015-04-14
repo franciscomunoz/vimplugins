@@ -73,23 +73,4 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 "Tagbar
 nmap <F4> :TagbarToggle<CR>
-"Ada settings Experiment
-let   g:ada_abbrev              = 1
-let   g:ada_default_compiler    = 'gnat'
-let   g:ada_extended_tagging        = 'list'
-let   g:ada_folding             = 'i'
-"let   g:ada_folding             = 'gibxp'
-"let   g:ada_folding             = 'spftc'
-"let   g:ada_rainbow_color           = 1
-let   g:ada_space_errors        = 1
-let   g:ada_standard_types          = 1
-let   g:ada_with_gnat_project_files = 1
-"let   g:ada_extended_completion     = 1
-"let   g:ada_line_errors         = 1
-"let   g:ada_omni_with_keywords      = 1
-let   g:Tlist_Exit_OnlyWindow       = 1
-let   g:Tlist_File_Fold_Auto_Close  = 1
-let   g:Tlist_Sort_Type         = "name"
-let   g:NERD_use_ada_with_spaces    = 1
-let   g:backup_directory        = '.backups'
-let   g:backup_purge            = 10
+
