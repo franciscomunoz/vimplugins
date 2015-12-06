@@ -20,3 +20,8 @@ else
     export TERM='xterm-color'
 fi
 
+========================CSCOPE=======================
+Con pathogen se necesita crear un folder dentro de bundle. Dentro de dicho
+folder hay que crear otro llamado plugins, y ahi depositar el .vim de cscope.
+Dicho archivo fue editado quitando lo del verbose con el fin de remover el
+error al cargar la DB de cscope

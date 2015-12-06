@@ -21,7 +21,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 syntax enable 		"enable syntax processing
 set tabstop=4		"number of colums a TAB counts for
 set softtabstop=4	"number of spaces in tab when editing
-"set expandtab		"tabs are spaces
+set expandtab		"tabs are spaces
 
 
 set number		"show line numbers
@@ -74,3 +74,12 @@ let g:nerdtree_tabs_open_on_console_startup=1
 "Tagbar
 nmap <F4> :TagbarToggle<CR>
 
+"Force to save changes in buffer
+cmap w!! w !sudo tee % > /dev/null
+"Remove trailing whitespaces
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F6> : set invpaste paste?<CR>
+
+
+"cscope
+"No need to add something here as you edited the .vim file. See "Francisco
