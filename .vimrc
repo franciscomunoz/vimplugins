@@ -25,11 +25,10 @@ syntax enable 		"enable syntax processing
 set tabstop=4		"number of colums a TAB counts for
 set softtabstop=4	"number of spaces in tab when editing
 set expandtab		"tabs are spaces
-
-
+set backspace=indent,eol,start "bs behaves like many other programs
 set number		"show line numbers
 set showcmd		"show command in bottom bar
-"set cursorline		"highlight current line
+set cursorline cursorcolumn		"highlight current line
 filetype indent on 	"load fuletype-specific indent files
 set wildmenu		"visual autocomplete for command menu
 set lazyredraw		"redraw only when we need to
