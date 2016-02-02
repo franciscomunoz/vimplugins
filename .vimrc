@@ -1,7 +1,3 @@
-"The new powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-
 set t_Co=256
 "vertical line
 if exists('+colorcolumn')
@@ -15,7 +11,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-filetype plugin indent on
 syntax enable
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
@@ -39,9 +34,6 @@ colorscheme wombat256mod
 "Searching
 set incsearch 		"search as characters are entered
 set hlsearch 		"highlight matches
-"turn off search highlight
-nnoremap <leader><space> : nohlsearch<CR>
-
 "Folding
 set foldenable 		    "enable folding
 set foldlevelstart=10	"open most folds by default
@@ -51,10 +43,29 @@ nnoremap <space> za
 set foldmethod=indent	"fold based on indent level
 
 "Leader shortcuts
-let mapleader=","	    "leader is comma
+let mapleader="\<Space>"	    "leader is comma
 inoremap jk <esc>	    "jk is scape
 nnoremap <leader>u :GundoToggle<CR>     "toggle undo
 nnoremap <leader>s :mksession<CR>       "save session
+
+"Air line
+"Inmediatey detected by vim
+"Enabling enhanced features slows my computer
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1            "Enhanced tabline
+let g:airline_theme='powerlineish'                           "Theme
+"let g:airline#extensions#tabline#buffer_idx_mode = 1 "Allows to select buffer
+"nmap <leader>1 <Plug>AirlineSelectTab1
+"nmap <leader>2 <Plug>AirlineSelectTab2
+"nmap <leader>3 <Plug>AirlineSelectTab3
+"nmap <leader>4 <Plug>AirlineSelectTab4
+"nmap <leader>5 <Plug>AirlineSelectTab5
+"nmap <leader>6 <Plug>AirlineSelectTab6
+"nmap <leader>7 <Plug>AirlineSelectTab7
+"nmap <leader>8 <Plug>AirlineSelectTab8
+"nmap <leader>9 <Plug>AirlineSelectTab9
+"nmap <leader>- <Plug>AirlineSelectPrevTab
+"nmap <leader>+ <Plug>AirlineSelectNextTab
 
 "CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -69,30 +80,38 @@ execute pathogen#infect()
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinSize = 45
-map <F2> :NERDTreeToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 "NerdTree tabs
 let g:nerdtree_tabs_open_on_console_startup=1
-
 "Tagbar
-nmap <F4> :TagbarToggle<CR>
-
+nnoremap <F3> :TagbarToggle<CR>
 "Force to save changes in buffer
 cmap w!! w !sudo tee % > /dev/null
 "Remove trailing whitespaces
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <silent> <F6> : set invpaste paste?<CR>
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F5> : set invpaste paste?<CR>
 
+"indent line
+"There is another plugin named
+"git://github.com/nathanaelkane/vim-indent-guides.git
+nnoremap <F6> :IndentLinesToggle<CR>
+"super tab
+"Complete options (disable preview scratch window)
+set completeopt=longest,menuone,menu
+"Enable context aware completion
+let g:SuperTabDefaultCompletionType = "context"
 
+"
 "cscope
 "No need to add something here as you edited the .vim file. See "Francisco
 "Tmux pane integration
 "http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits
-if exists('$TMUX')                                                                                                           
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)                                  
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd                                        
+    silent! execute "wincmd " . a:wincmd
     if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)                             
+      call system("tmux select-pane -" . a:tmuxdir)
       redraw!
     endif
   endfunction
@@ -108,4 +127,32 @@ map <C-h> <C-w>h
   map <C-j> <C-w>j
   map <C-k> <C-w>k
   map <C-l> <C-w>l
-endif  
+endif
+
+"clang competlete for C++ MAC ONLY at the moment
+let os = substitute(system('uname'), "\n", "", "")
+"let s:clang_library_path=''
+if os == "Linux"
+        " Do Linux specific stuff
+elseif os == "Darwin"
+" " Do  OSX specific stuff
+let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
+endif
+
+set conceallevel=2
+set concealcursor=vin   "conceal in insert (i), normal (n) and visual (v) modes
+let g:clang_snippets=1  "snippets magic on code placeholders like
+                        "function argument, template parameters, etc.
+let g:clang_snippets_engine='ultisnips' "Default
+let g:clang_complete_auto = 0 "Disable auto popup, use <TAB> to autocomplete
+let g:clang_complete_copen = 1 "Show clang error in quick fix window
+
+"Ultisnips
+let g:UltiSnipsExpandTrigger="<leader>i"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+filetype plugin indent on
