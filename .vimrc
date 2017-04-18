@@ -19,6 +19,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 syntax enable 		"enable syntax processing
 set tabstop=4		"number of colums a TAB counts for
 set softtabstop=4	"number of spaces in tab when editing
+set shiftwidth=0 "if zero then takes current tabstop value
 set expandtab		"tabs are spaces
 set backspace=indent,eol,start "bs behaves like many other programs
 set number		"show line numbers
@@ -129,14 +130,14 @@ map <C-h> <C-w>h
   map <C-l> <C-w>l
 endif
 
-"clang competlete for C++ MAC ONLY at the moment
+"clang competlete for C++ Linux/Mac configurations
 let os = substitute(system('uname'), "\n", "", "")
-"let s:clang_library_path=''
 if os == "Linux"
-        " Do Linux specific stuff
+"let g:clang_library_path='/usr/lib/x86_64-linux-gnu'
+let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
 elseif os == "Darwin"
 " " Do  OSX specific stuff
-let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
 if isdirectory(s:clang_library_path)
     let g:clang_library_path=s:clang_library_path
 endif
@@ -146,9 +147,11 @@ set conceallevel=2
 set concealcursor=vin   "conceal in insert (i), normal (n) and visual (v) modes
 let g:clang_snippets=1  "snippets magic on code placeholders like
                         "function argument, template parameters, etc.
-let g:clang_snippets_engine='ultisnips' "Default
 let g:clang_complete_auto = 0 "Disable auto popup, use <TAB> to autocomplete
 let g:clang_complete_copen = 1 "Show clang error in quick fix window
+let g:clang_periodic_quickfix = 1 "Open quick fix window
+let g:clang_close_preview = 1 "preview window close auto after completion
+let g:clang_user_options = '-std=c++11'
 
 "Ultisnips
 let g:UltiSnipsExpandTrigger="<leader>i"
