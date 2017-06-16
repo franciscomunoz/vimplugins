@@ -137,10 +137,7 @@ if os == "Linux"
 let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
 elseif os == "Darwin"
 " " Do  OSX specific stuff
-let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
-if isdirectory(s:clang_library_path)
-    let g:clang_library_path=s:clang_library_path
-endif
+    let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 endif
 
 set conceallevel=2
@@ -152,10 +149,5 @@ let g:clang_complete_copen = 1 "Show clang error in quick fix window
 let g:clang_periodic_quickfix = 1 "Open quick fix window
 let g:clang_close_preview = 1 "preview window close auto after completion
 let g:clang_user_options = '-std=c++11'
-
-"Ultisnips
-let g:UltiSnipsExpandTrigger="<leader>i"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 filetype plugin indent on
