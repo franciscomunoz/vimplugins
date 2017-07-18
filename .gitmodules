@@ -49,3 +49,6 @@
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "bundle/vim-linux-coding-style"]
+	path = bundle/vim-linux-coding-style
+	url = https://github.com/vivien/vim-linux-coding-style.git
