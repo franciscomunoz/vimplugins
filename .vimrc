@@ -44,7 +44,7 @@ nnoremap <space> za
 set foldmethod=indent	"fold based on indent level
 
 "Leader shortcuts
-let mapleader="\<Space>"	    "leader is comma
+let mapleader="\<Space>"	    "leader is space
 inoremap jk <esc>	    "jk is scape
 nnoremap <leader>u :GundoToggle<CR>     "toggle undo
 nnoremap <leader>s :mksession<CR>       "save session
@@ -89,7 +89,8 @@ nnoremap <F3> :TagbarToggle<CR>
 "Force to save changes in buffer
 cmap w!! w !sudo tee % > /dev/null
 "Remove trailing whitespaces
-nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+"nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <F4> :echo 'Current time is '<CR>
 nnoremap <silent> <F5> : set invpaste paste?<CR>
 
 "indent line
@@ -148,6 +149,9 @@ let g:clang_complete_auto = 0 "Disable auto popup, use <TAB> to autocomplete
 let g:clang_complete_copen = 1 "Show clang error in quick fix window
 let g:clang_periodic_quickfix = 1 "Open quick fix window
 let g:clang_close_preview = 1 "preview window close auto after completion
-let g:clang_user_options = '-std=c++11'
+let g:clang_user_options = '-std=c++14'
 
 filetype plugin indent on
+"Turn off this feature (bash plugin) that clashes with tmux
+let g:BASH_Ctrl_j = 'off'
+let g:BASH_Ctrl_d = 'off'
