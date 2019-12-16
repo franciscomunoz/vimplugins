@@ -39,8 +39,7 @@ set hlsearch 		"highlight matches
 set foldenable 		    "enable folding
 set foldlevelstart=10	"open most folds by default
 set foldnestmax=10	    "10 nested fold max
-"space open/close folds
-nnoremap <space> za
+
 set foldmethod=indent	"fold based on indent level
 
 "Leader shortcuts
@@ -72,6 +71,7 @@ let g:airline_theme='powerlineish'                           "Theme
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+"CtrlP is using ag as the search engine
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -92,17 +92,12 @@ cmap w!! w !sudo tee % > /dev/null
 "nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <F4> :echo 'Current time is '<CR>
 nnoremap <silent> <F5> : set invpaste paste?<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 "indent line
 "There is another plugin named
 "git://github.com/nathanaelkane/vim-indent-guides.git
 nnoremap <F6> :IndentLinesToggle<CR>
-"super tab
-"Complete options (disable preview scratch window)
-set completeopt=longest,menuone,menu
-"Enable context aware completion
-let g:SuperTabDefaultCompletionType = "context"
-
 "
 "cscope
 "No need to add something here as you edited the .vim file. See "Francisco
@@ -143,13 +138,6 @@ endif
 
 set conceallevel=2
 set concealcursor=vin   "conceal in insert (i), normal (n) and visual (v) modes
-let g:clang_snippets=1  "snippets magic on code placeholders like
-                        "function argument, template parameters, etc.
-let g:clang_complete_auto = 0 "Disable auto popup, use <TAB> to autocomplete
-let g:clang_complete_copen = 1 "Show clang error in quick fix window
-let g:clang_periodic_quickfix = 1 "Open quick fix window
-let g:clang_close_preview = 1 "preview window close auto after completion
-let g:clang_user_options = '-std=c++14'
 
 filetype plugin indent on
 "Turn off this feature (bash plugin) that clashes with tmux
