@@ -11,3 +11,27 @@ Rename the folder `vimplugins` to `.vim` and create a symbolic link to `.vimrc` 
 Add new entries in the vimrc file and run `:PlugInstall`
 
 Refer to [vimplug] (https://github.com/junegunn/vim-plug)
+
+## Profiling which plugins are making vim slow
+Run the following command sequence:
+```
+:profile start profile.log
+:profile func *
+:profile file *
+" At this point do slow actions
+:profile pause
+:noautocmd qall!
+```
+Go to the bottom of the file `profile.log` and read the summary.
+
+## Profile startup time
+Simply run:
+```
+vim --cmd 'profile start profile.log' \
+    --cmd 'profile func *' \
+    --cmd 'profile file *' \
+    -c 'profdel func *' \
+    -c 'profdel file *' \
+    -c 'qa!'
+```
+Go to the bottom of the file `profile.log` and read the summary.
