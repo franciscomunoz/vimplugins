@@ -31,7 +31,7 @@ set foldenable 		    "enable folding
 set foldlevelstart=10	"open most folds by default
 set foldnestmax=10	    "10 nested fold max
 set foldmethod=indent	"fold based on indent level
-
+set colorcolumn=80
 let mapleader=","
 
 "Try a different plugin manager rather than manually
@@ -49,7 +49,7 @@ endif
 call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
-Plug 'http://github.com/tpope/vim-fugitive' " Fugitive
+Plug 'http://github.com/tpope/vim-fugitive' " Fugitive (Delete if slowing down execution)
 Plug 'https://github.com/preservim/nerdtree' " NerdTred
 Plug 'https://github.com/jistr/vim-nerdtree-tabs' "Deprecated but I still use it
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
@@ -62,8 +62,10 @@ Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/christoomey/vim-tmux-navigator' "Tmux keybindings
 Plug 'https://github.com/Yggdroot/indentLine' "See indentation
-Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} "C/C++ completion
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} "C/C++ completion Delete if there are problems
 Plug 'https://github.com/jiangmiao/auto-pairs' "C/C++ parenthesis and brackets
+Plug 'https://github.com/franciscomunoz/cscope-maps' " Add cscope for source navigation
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  } "Fuzzy finder like Ctrl-P
 Plug 'junegunn/fzf.vim'
 Plug 'cdelledonne/vim-cmake' "CMakePlugin
